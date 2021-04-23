@@ -1,14 +1,14 @@
 import React from "react";
 import {Progressbar} from "./Progressbar/Progressbar";
 import styled from "styled-components";
-import {WeekSelector} from "./WeekSelector/WeekSelector";
+import {WeekSlider} from "./WeekSlider/WeekSlider";
 import {ProteinsSelector} from "./ProteinsSelector/ProteinsSelector";
 
 function Dashboard() {
     return (
         <MainContainer>
             <Progressbar currentState={7} maxWeek={12}></Progressbar>
-            <WeekSelector currentWeek={7} maxWeek={12}></WeekSelector>
+            <WeekSlider currentWeek={7} maxWeek={12}></WeekSlider>
             <ProteinsSelector></ProteinsSelector>
         </MainContainer>
     );

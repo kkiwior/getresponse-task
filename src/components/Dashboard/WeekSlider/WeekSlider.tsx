@@ -7,25 +7,26 @@ interface IWeekProps {
     maxWeek: number;
 }
 
-function WeekSelector({currentWeek, maxWeek}: IWeekProps) {
-    const [week, setWeek] = useState<number>(currentWeek);
+function WeekSlider({currentWeek, maxWeek}: IWeekProps) {
+    const [week, setWeek] = useState(currentWeek);
 
     const changeWeek = useCallback((c: number): void => {
-        if ((week === 1 && c === -1) || (week === maxWeek && c === 1)) return;
         setWeek(week + c);
-    }, [week, maxWeek]);
+    }, [week]);
 
     return (
         <SelectorContainer>
-            <ArrowButton className="reverse" onClick={() => changeWeek(-1)}><Arrow></Arrow></ArrowButton>
+            {week > 1 ? <ArrowButton style={{gridArea: "larrow"}} className="reverse" onClick={() => changeWeek(-1)}><Arrow></Arrow></ArrowButton> : null}
             <Week>Week {week}</Week>
-            <ArrowButton onClick={() => changeWeek(1)}><Arrow></Arrow></ArrowButton>
+            {week < maxWeek ? <ArrowButton style={{gridArea: "rarrow"}} onClick={() => changeWeek(1)}><Arrow></Arrow></ArrowButton> : null}
         </SelectorContainer>
     );
 }
 
 const SelectorContainer = styled.div`
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 26px auto 26px;
+  grid-template-areas: 'larrow week rarrow';
   width: 299px;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +53,8 @@ const ArrowButton = styled.button`
 
 const Week = styled.div`
   font-size: 48px;
+  grid-area: week;
   color: var(--orangeColor);
 `;
 
-export {WeekSelector}
+export {WeekSlider}
