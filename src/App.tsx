@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Header} from "./components/Header/Header";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import styled from "styled-components";
+import {Dashboard} from "./components/Dashboard/Dashboard";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <Header></Header>
+                <Container>
+                    <Switch>
+                        <Route path="/">
+                            <Dashboard></Dashboard>
+                        </Route>
+                        <Route path="/recipes">
+                            <Dashboard></Dashboard>
+                        </Route>
+                    </Switch>
+                </Container>
+            </Router>
+        </div>
+    );
 }
+
+const Container = styled.section`
+  margin: 24px auto 0;
+  max-width: 978px;
+`;
 
 export default App;

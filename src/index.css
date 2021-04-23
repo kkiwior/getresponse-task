@@ -1,13 +1,36 @@
+@font-face {
+    font-family: "Helvetica Neue LTStd";
+    font-weight: 200;
+    src: url("./resources/fonts/HelveticaNeueLTStd-Th.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Helvetica Neue LTStd";
+    font-weight: 600;
+    src: url("./resources/fonts/HelveticaNeueLTStd-Bd.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Helvetica Neue LTStd";
+    font-weight: 400;
+    src: url("./resources/fonts/HelveticaNeueLTStd-Roman.otf") format("opentype");
+}
+
+:root {
+    --headerBorderColor: #e1e1e1;
+    --orangeColor: #ff811a;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    background-color: #f9f9f9;
+    font-family: "Helvetica Neue LTStd", serif;
+    letter-spacing: .01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
