@@ -1,21 +1,26 @@
-import React from 'react';
-import {Header} from "./components/Header/Header";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import styled from "styled-components";
-import {Dashboard} from "./components/Dashboard/Dashboard";
+import React, { ReactElement } from 'react';
+import { Header } from './components/Header/Header';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import { Dashboard } from './components/Dashboard/Dashboard';
 
-function App() {
+const Container = styled.section`
+  margin: 24px auto 0;
+  max-width: 978px;
+`;
+
+function App(): ReactElement {
     return (
         <div className="App">
             <Router>
-                <Header></Header>
+                <Header/>
                 <Container>
                     <Switch>
                         <Route path="/">
-                            <Dashboard></Dashboard>
+                            <Dashboard/>
                         </Route>
                         <Route path="/recipes">
-                            <Dashboard></Dashboard>
+                            <Dashboard/>
                         </Route>
                     </Switch>
                 </Container>
@@ -23,10 +28,5 @@ function App() {
         </div>
     );
 }
-
-const Container = styled.section`
-  margin: 24px auto 0;
-  max-width: 978px;
-`;
 
 export default App;

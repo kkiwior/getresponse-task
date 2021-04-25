@@ -1,0 +1,210 @@
+{
+  "currentDay": 65,
+  "timeTable": [
+    "6:00 AM",
+    "9:00 AM",
+    "12:00 PM",
+    "3:00 PM",
+    "6:00 PM"
+  ],
+  "days": [
+    {
+      "id": 64,
+      "meals": [
+        {
+          "id": 1,
+          "name": "Bod•ē Shake",
+          "isCompleted": true
+        },
+        {
+          "id": 2,
+          "name": "Ham and Swiss Roll Ups",
+          "isCompleted": true
+        },
+        {
+          "id": 3,
+          "name": "Turkey Melt",
+          "isCompleted": true
+        },
+        {
+          "id": 4,
+          "name": "Bod•ē Burn with Mozzarella and Tomato Slices",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "Turkey Melt",
+          "isCompleted": false
+        }
+      ],
+      "type": "LOW-CARB",
+      "isWorkoutDone": true
+    },
+    {
+      "id": 65,
+      "meals": [
+        {
+          "id": 1,
+          "name": "Bod•ē Shake",
+          "isCompleted": true
+        },
+        {
+          "id": 2,
+          "name": "Ham and Swiss Roll Ups",
+          "isCompleted": true
+        },
+        {
+          "id": 3,
+          "name": "Turkey Melt",
+          "isCompleted": true
+        },
+        {
+          "id": 4,
+          "name": "Bod•ē Burn with Mozzarella and Tomato Slices",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "Turkey Melt",
+          "isCompleted": false
+        }
+      ],
+      "type": "LOW-CARB",
+      "isWorkoutDone": true
+    },
+    {
+      "id": 66,
+      "meals": [
+        {
+          "id": 1,
+          "name": "Bod•ē Shake",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Grilled Steak (HC)",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Bod•ē Shake",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Bod•ē Burn and Whole-Wheat English Muffin with Butter Spray",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "Garlic Lime Chicken (HC)",
+          "isCompleted": false
+        }
+      ],
+      "type": "HIGH-CARB",
+      "isWorkoutDone": false
+    },
+    {
+      "id": 67,
+      "meals": [
+        {
+          "id": 1,
+          "name": "Bod•ē Shake",
+          "isCompleted": true
+        },
+        {
+          "id": 2,
+          "name": "Ham and Swiss Roll Ups",
+          "isCompleted": true
+        },
+        {
+          "id": 3,
+          "name": "Turkey Melt",
+          "isCompleted": true
+        },
+        {
+          "id": 4,
+          "name": "Bod•ē Burn with Mozzarella and Tomato Slices",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "Turkey Melt",
+          "isCompleted": false
+        }
+      ],
+      "type": "LOW-CARB",
+      "isWorkoutDone": false
+    },
+    {
+      "id": 68,
+      "meals": [
+        {
+          "id": 1,
+          "name": "Bod•ē Shake",
+          "isCompleted": true
+        },
+        {
+          "id": 2,
+          "name": "Ham and Swiss Roll Ups",
+          "isCompleted": true
+        },
+        {
+          "id": 3,
+          "name": "Turkey Melt",
+          "isCompleted": true
+        },
+        {
+          "id": 4,
+          "name": "Bod•ē Burn with Mozzarella and Tomato Slices",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "Turkey Melt",
+          "isCompleted": false
+        }
+      ],
+      "type": "LOW-CARB",
+      "isWorkoutDone": false
+    },
+    {
+      "id": 69,
+      "meals": [
+        {
+          "id": 1,
+          "name": "Bod•ē Shake",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Grilled Steak (HC)",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Bod•ē Shake",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Bod•ē Burn and Whole-Wheat English Muffin with Butter Spray",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "Garlic Lime Chicken (HC)",
+          "isCompleted": false
+        }
+      ],
+      "type": "HIGH-CARB",
+      "isWorkoutDone": false
+    },
+    {
+      "id": 70,
+      "meals": [],
+      "type": "GUILT-FREE",
+      "isWorkoutDone": false
+    }
+  ]
+}

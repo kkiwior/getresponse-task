@@ -1,5 +1,5 @@
-import {useCallback} from "react";
-import {useLocalStorage} from "../../../hooks/useLocalStorage";
+import React, { ReactElement, useCallback } from 'react';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 
 interface IProteinProps {
     name: string;
@@ -7,19 +7,19 @@ interface IProteinProps {
     notSelected: string[];
 }
 
-function Protein({name, selected, notSelected}: IProteinProps) {
-    const [toggle, setToggle] = useLocalStorage(name, false);
+function Protein(props: IProteinProps): ReactElement {
+    const [toggle, setToggle] = useLocalStorage(props.name, false);
 
     const toggleProtein = useCallback(() => setToggle(!toggle), [toggle, setToggle]);
 
     return (
-        <div onClick={toggleProtein}>
-            <picture onClick={toggleProtein}>
-                <source srcSet={toggle ? selected[1] : notSelected[1]} type="image/webp"/>
-                <img src={toggle ? selected[0] : notSelected[0]} title={name} alt={name}/>
+        <div onClick={toggleProtein} tabIndex={0} role="button">
+            <picture>
+                <source srcSet={toggle ? props.selected[1] : props.notSelected[1]} type="image/webp"/>
+                <img src={toggle ? props.selected[0] : props.notSelected[0]} title={props.name} alt={props.name}/>
             </picture>
         </div>
     );
 }
 
-export {Protein}
+export { Protein };
