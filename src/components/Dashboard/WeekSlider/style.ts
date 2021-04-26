@@ -7,10 +7,9 @@ interface IGridColumnProps {
 export const SelectorContainer = styled.div`
   display: grid;
   grid-template-columns: 26px auto 26px;
-  grid-template-areas: 'larrow week rarrow';
   width: 299px;
-  justify-content: space-between;
   align-items: center;
+  text-align: center;
   margin: 0 auto;
   padding: 5px 0 0 1px;
 `;
@@ -23,6 +22,7 @@ export const ArrowButton = styled.button<IGridColumnProps>`
   background: transparent;
   transition: 0.2s all ease-in;
   grid-column-start: ${props => props.column};
+  grid-row-start: 1;
 
   &:hover {
     box-shadow: 0 0 2px 1px var(--headerBorderColor);
@@ -35,7 +35,7 @@ export const ArrowButton = styled.button<IGridColumnProps>`
 
 export const Week = styled.div<IGridColumnProps>`
   font-size: 48px;
-  grid-area: week;
   color: var(--orangeColor);
   grid-column-start: ${props => props.column};
+  grid-row-start: 1;
 `;

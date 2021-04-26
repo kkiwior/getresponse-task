@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
 import { Header } from './components/Header/Header';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { Dashboard } from './components/Dashboard/Dashboard';
+import { Footer } from './components/Footer/Footer';
 
 const Container = styled.section`
   margin: 24px auto 0;
@@ -16,6 +17,7 @@ function App(): ReactElement {
                 <Header/>
                 <Container>
                     <Switch>
+                        <Redirect exact={true} from="/" to="dashboard" />
                         <Route path="/">
                             <Dashboard/>
                         </Route>
@@ -24,6 +26,7 @@ function App(): ReactElement {
                         </Route>
                     </Switch>
                 </Container>
+                <Footer/>
             </Router>
         </div>
     );

@@ -12,6 +12,7 @@ function Progressbar(props: IProgressProps): ReactElement {
     const xOffset = 10;
     const xSpace = 20;
     const cOffset = 5;
+    const width = xSpace * props.maxWeek - xOffset;
 
     for (let i = 0, key = 0; i < props.maxWeek; i++) {
         if (i !== 0) {
@@ -42,9 +43,9 @@ function Progressbar(props: IProgressProps): ReactElement {
     }
 
     return (
-        <ProgressContainer>
+        <ProgressContainer width={width}>
             <Title>Your {props.maxWeek} week progress</Title>
-            <ProgressbarSvg width={`${xSpace * props.maxWeek - xOffset}px`} height="10px">
+            <ProgressbarSvg height="10px">
                 {progressSvg}
             </ProgressbarSvg>
             <WeekContainer>

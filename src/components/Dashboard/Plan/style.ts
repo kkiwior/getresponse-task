@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-import guiltFreeIcon from '../../../resources/images/guilt-free.png';
-import bgTablePattern from '../../../resources/images/bg-table-pattern.png';
+import guiltFreeIcon from 'resources/images/guilt-free.png';
+import bgTablePattern from 'resources/images/bg-table-pattern.png';
 
 interface CellProps {
     column: number;
+    endColumn?: number;
     row: number;
     endRow?: number;
     active?: boolean;
+    image?: string;
 }
 
 interface IPlanContainerProps {
@@ -24,29 +26,32 @@ export const Arrow = styled.div`
 
 export const Selection = styled.div<CellProps>`
   grid-column-start: ${props => props.column};
+  grid-column-end: ${props => props.endColumn ? props.endColumn : props.column};
   grid-row-start: ${props => props.row};
   grid-row-end: ${props => props.endRow ? props.endRow : props.row};
   border: 2px solid var(--orangeColor);
   pointer-events: none;
+  z-index: 3;
 `;
 
 export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-${props.column}` }))<CellProps>`
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  background-color: white;
   width: 100%;
+  position: relative;
+  background-color: white;
 
   grid-column-start: ${props => props.column};
+  ${props => props.endColumn ? `grid-column-end: ${props.endColumn};` : null}
   grid-row-start: ${props => props.row};
-  grid-row-end: ${props => props.endRow ? props.endRow : props.row};
+  ${props => props.endRow ? `grid-row-end: ${props.endRow};` : null}
   color: ${props => props.active ? '#000000' : '#828282'};
-
-
+  
   &.day {
     font-size: 24px;
     justify-content: center;
     align-items: center;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     color: ${props => props.active ? 'var(--orangeColor)' : '#adbb0c'};
   }
@@ -86,7 +91,6 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
 
   &.guilt-free {
     font-size: 35px;
-    writing-mode: sideways-lr;
     align-items: center;
     justify-content: center;
     font-weight: 200;
@@ -94,52 +98,115 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
 
     &::before {
       content: "";
-      margin-top: 25px;
       width: 32px;
       height: 32px;
       background: url(${guiltFreeIcon});
+      position: relative;
     }
   }
 
   &.column-1, &.workout, &.type, &.print {
     background: none;
-    border-left: none;
     justify-content: center;
     align-items: center;
   }
 
-  &.day, &.type, &.time:first-of-type {
-    border-top: none;
-  }
+
 
   &.workout {
-    border-bottom: none;
     font-size: 11px;
+  }
+  
+  @media (max-width: 978px){
+    &.day, &.time, &.border, &.workout, &.type, &.print, &.meal, &.guilt-free {
+      border-right: none;
+      border-left: none;
+    }
+    
+    &.guilt-free {
+      background: white;
+      padding: 20px 0;
+      
+      &::before {
+        margin-right: 12px;
+      }
+    }
+    
+    &.workout {
+      background-color: white;
+    }
+    
+    &.day, &.workout, &.print, &.type {
+      min-height: 32px;
+    }
+  }
+  
+  @media (min-width: 978px) {
+    &.guilt-free {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+
+      &::before {
+        transform: rotate(180deg);
+        position: relative;
+        bottom: 25px;
+        margin-top: 35px
+      }
+    }
+    
+    &.workout, &.print, &.time:nth-child(5), &.meal:nth-child(5n) {
+      border-bottom: none;
+    }
+
+    &.day, &.type, &.time:first-of-type, &.print {
+      border-top: none;
+    }
+
+    &.column-1, &.workout, &.type, &.print, &.column-2, &.column-8.guilt-free {
+      border-left: none;
+    }
+
+    &.column-1.workout, &.column-8.day {
+      border-right: none;
+    }
+    
+    &.column-1.workout {
+      border-width: 2px;
+      margin-top: -1px;
+    }
   }
 `;
 
 export const PlanContainer = styled.div<IPlanContainerProps>`
   width: 100%;
-  height: 580px;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 0.85fr repeat(7, 1.26fr);
-  grid-template-rows: 0.5fr repeat(5, 0.9fr) repeat(2, 0.35fr);
   background: url(${bgTablePattern}) #eeeeee repeat;
   background-blend-mode: multiply;
   font-family: "Arial", serif;
   margin-top: 28px;
 
-  & ${props => `.column-${props.column - 1}`} {
-    border-right: none;
+  @media (max-width: 978px){
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(7, 0.8fr repeat(5, 1fr) 0.8fr);
+    max-height: 4000px;
   }
+  
+  @media (min-width: 978px){
+    grid-template-columns: 0.85fr repeat(7, 1.26fr);
+    grid-template-rows: 0.5fr repeat(5, 0.9fr) repeat(2, 0.35fr);
+    height: 580px;
 
-  & ${props => `.column-${props.column + 1}`} {
-    border-left: none;
-  }
+    & ${props => `.column-${props.column - 1}`} {
+      border-right: none;
+    }
 
-  & ${props => `.column-${props.column}`} {
-    border-right: none;
-    border-left: none;
+    & ${props => `.column-${props.column + 1}`} {
+      border-left: none;
+    }
+
+    & ${props => `.column-${props.column}`} {
+      border-right: none;
+      border-left: none;
+    }
   }
 `;

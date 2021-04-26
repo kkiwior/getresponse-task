@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { ReactComponent as tick } from '../../../../resources/icons/tick.svg';
-import workoutEnabledIcon from '../../../../resources/images/workout-enabled.png';
-import workoutIcon from '../../../../resources/images/workout.png';
+import { ReactComponent as tick } from 'resources/icons/tick.svg';
+import workoutEnabledIcon from 'resources/images/workout-enabled.png';
+import workoutIcon from 'resources/images/workout.png';
 
-interface IWorkoutIconProps {
+interface IEnabledProps {
     enabled: boolean;
 }
 
 export const MealName = styled.span`
-  margin: 10px 0 0 12px;
+  margin: 10px 6px 0 12px;
   display: inline-block;
   width: 100%;
   height: 78px;
@@ -20,6 +20,14 @@ export const MealTick = styled.img`
   display: inline-block;
   margin-top: 8px;
   margin-right: 6px;
+`;
+
+export const MealImage = styled.img<IEnabledProps>`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  ${props => props.enabled ? null : 'filter: grayscale(1) opacity(0.66);'}
 `;
 
 export const PrintText = styled.span`
@@ -47,7 +55,7 @@ export const WorkoutContainer = styled.div`
   }
 `;
 
-export const WorkoutIcon = styled.div<IWorkoutIconProps>`
+export const WorkoutIcon = styled.div<IEnabledProps>`
   grid-column-start: 2;
   margin-left: 4px;
   width: 28px;

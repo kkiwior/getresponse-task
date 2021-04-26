@@ -1,5 +1,5 @@
 import React, { ReactElement, useCallback } from 'react';
-import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 interface IProteinProps {
     name: string;

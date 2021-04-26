@@ -1,5 +1,5 @@
 import React, { ReactElement, useCallback, useState } from 'react';
-import { ReactComponent as Arrow } from '../../../resources/icons/arrow.svg';
+import { ReactComponent as Arrow } from 'resources/icons/arrow.svg';
 import { SelectorContainer, ArrowButton, Week } from './style';
 
 interface IWeekProps {

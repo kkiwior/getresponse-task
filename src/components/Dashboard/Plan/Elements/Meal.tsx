@@ -1,9 +1,9 @@
 import React, { ReactElement, useCallback } from 'react';
-import { usePlan } from '../../../../hooks/usePlan';
-import mealTick from '../../../../resources/images/meal-tick.png';
-import { IMeal } from '../../../../interfaces/IPlan';
+import { usePlan } from 'hooks/usePlan';
+import mealTick from 'resources/images/meal-tick.png';
+import { IMeal } from 'interfaces/IPlan';
 import { Cell } from '../style';
-import { MealName, MealTick } from './style';
+import { MealName, MealTick, MealImage } from './style';
 
 interface IMealProps {
     meal: IMeal;
@@ -27,11 +27,13 @@ export function Meal(props: IMealProps): ReactElement {
         <Cell className="meal"
             column={props.column}
             row={props.row}
+            image={props.meal.image ? props.meal.image : undefined}
             active={props.active}
             onClick={handleMealClick}
         >
             <MealName>{props.meal.name}</MealName>
             {props.meal.isCompleted ? <MealTick src={mealTick}/> : null}
+            {props.meal.image ? <MealImage src={`/images/meals/${props.meal.image}`} enabled={props.active}/> : null}
         </Cell>
     );
 }

@@ -1,13 +1,25 @@
 import styled from 'styled-components';
 
-export const ProgressContainer = styled.div`
+interface IWidthProps {
+    width: number;
+}
+
+export const ProgressContainer = styled.div<IWidthProps>`
   display: inline-block;
-  margin-right: 62px;
+  width: ${props => props.width}px;
+  
+  @media (max-width: 978px){
+    margin: 0 auto 10px auto;
+  }
 `;
 
 export const Title = styled.p`
   text-transform: uppercase;
   margin-bottom: 8px;
+
+  @media (max-width: 978px){
+    text-align: center;
+  }
 `;
 
 export const ProgressbarSvg = styled.svg`

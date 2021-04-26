@@ -5,12 +5,19 @@ export const NavigationContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 50%;
-  margin-left: 118px;
 
-  &::before {
-    content: "";
-    padding-left: 16px;
-    border-left: 1px solid var(--headerBorderColor);
+  @media (min-width: 978px){
+    &::before {
+      content: "";
+      padding-left: 16px;
+      margin-left: 118px;
+      border-left: 1px solid var(--headerBorderColor);
+    }
+  }
+  
+  @media (max-width: 978px){
+    position: sticky;
+    top: 0;
   }
 `;
 
@@ -49,5 +56,13 @@ export const NavigationLink = styled(NavLink)`
   & a {
     text-decoration: none;
     color: unset;
+  }
+  
+  @media (max-width: 978px){
+    padding: 20px 10px;
+
+    &.active::after, &:hover::after {
+      bottom: 10px;
+    }
   }
 `;

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import avatar from '../../../resources/images/avatar.jpg';
+import avatar from 'resources/images/avatar.jpg';
 
 export const ProfileContainer = styled.div`
   width: 50%;
-  height: 79px;
   align-items: center;
   display: inline-flex;
   justify-content: flex-end;
@@ -12,6 +11,14 @@ export const ProfileContainer = styled.div`
     margin-left: 10px;
     transform: scale(0.5, 0.5) rotate(90deg);
     cursor: pointer;
+  }
+  
+  @media (min-height: 978px){
+    height: 79px;
+  }
+  
+  @media (max-height: 978px){
+    margin-right: 4px;
   }
 `;
 

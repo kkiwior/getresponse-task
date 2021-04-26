@@ -1,6 +1,7 @@
 export interface IMeal {
     id: number;
     name: string;
+    image?: string;
     isCompleted: boolean;
 }
 
