@@ -60,7 +60,7 @@ export const NavigationLink = styled(NavLink)`
   
   @media (max-width: 978px){
     padding: 20px 6px;
-    font-weight: 200;
+    font-weight: 400;
 
     &.active::after, &:hover::after {
       bottom: 10px;

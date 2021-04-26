@@ -37,7 +37,7 @@ export function Meal(props: IMealProps): ReactElement {
         >
             <MealName>{props.meal.name}</MealName>
             {props.meal.isCompleted ? <MealTick src={mealTick}/> : null}
-            {props.meal.image ? <MealImage src={`getresponse-task/images/meals/${props.meal.image}`} current={props.isActive}/> : null}
+            {props.meal.image ? <MealImage src={`./images/meals/${props.meal.image}`} current={props.isCurrent}/> : null}
         </Cell>
     );
 }

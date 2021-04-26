@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Header } from './components/Header/Header';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { Dashboard } from './components/Dashboard/Dashboard';
 import { Footer } from './components/Footer/Footer';
@@ -13,7 +13,7 @@ const Container = styled.section`
 function App(): ReactElement {
     return (
         <div className="App">
-            <Router basename="/getresponse-task">
+            <Router>
                 <Header/>
                 <Container>
                     <Switch>

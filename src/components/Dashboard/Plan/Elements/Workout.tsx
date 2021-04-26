@@ -24,8 +24,9 @@ function Workout(props: IWorkoutProps): ReactElement {
         <Cell className="workout"
             position={props.position}
             active={props.isActive}
+            onClick={handleClick}
         >
-            <WorkoutContainer onClick={handleClick}>
+            <WorkoutContainer>
                 <WorkoutIcon current={props.isDone}/>
                 {props.isDone ? <Tick/> : null}
             </WorkoutContainer>

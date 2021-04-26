@@ -6,11 +6,11 @@ export const ProfileContainer = styled.div`
   align-items: center;
   display: inline-flex;
   justify-content: flex-end;
+  cursor: pointer;
 
   & svg {
     margin-left: 10px;
     transform: scale(0.5, 0.5) rotate(90deg);
-    cursor: pointer;
   }
   
   @media (min-height: 978px){

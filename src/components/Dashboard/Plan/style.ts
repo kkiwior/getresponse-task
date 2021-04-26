@@ -100,6 +100,7 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
     justify-content: center;
     font-weight: 200;
     color: #c2c2c2;
+    cursor: text;
 
     &::before {
       content: "";
