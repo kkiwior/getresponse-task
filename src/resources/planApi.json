@@ -48,17 +48,17 @@
           "id": 1,
           "name": "Bod•ē Shake",
           "image": "bodeshake.png",
-          "isCompleted": true
+          "isCompleted": false
         },
         {
           "id": 2,
           "name": "Ham and Swiss Roll Ups",
-          "isCompleted": true
+          "isCompleted": false
         },
         {
           "id": 3,
           "name": "Turkey Melt",
-          "isCompleted": true
+          "isCompleted": false
         },
         {
           "id": 4,
@@ -115,17 +115,17 @@
           "id": 1,
           "name": "Bod•ē Shake",
           "image": "bodeshake.png",
-          "isCompleted": true
+          "isCompleted": false
         },
         {
           "id": 2,
           "name": "Ham and Swiss Roll Ups",
-          "isCompleted": true
+          "isCompleted": false
         },
         {
           "id": 3,
           "name": "Turkey Melt",
-          "isCompleted": true
+          "isCompleted": false
         },
         {
           "id": 4,

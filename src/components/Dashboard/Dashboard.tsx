@@ -8,17 +8,14 @@ import { MainContainer } from './style';
 
 function Dashboard(): ReactElement {
     return (
-        <React.Fragment>
+        <PlanProvider>
             <MainContainer>
                 <Progressbar currentState={7} maxWeek={12}/>
                 <WeekSlider currentWeek={7} maxWeek={12}/>
                 <ProteinsSelector/>
             </MainContainer>
-            <PlanProvider>
-                <Plan/>
-            </PlanProvider>
-        </React.Fragment>
-
+            <Plan/>
+        </PlanProvider>
     );
 }
 

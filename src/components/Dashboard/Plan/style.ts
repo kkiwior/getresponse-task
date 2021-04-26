@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import guiltFreeIcon from 'resources/images/guilt-free.png';
 import bgTablePattern from 'resources/images/bg-table-pattern.png';
+import { IGridPosition } from 'interfaces/IGridPosition';
 
 interface CellProps {
-    column: number;
-    endColumn?: number;
-    row: number;
-    endRow?: number;
+    position: IGridPosition;
     active?: boolean;
     image?: string;
 }
@@ -25,27 +23,27 @@ export const Arrow = styled.div`
 `;
 
 export const Selection = styled.div<CellProps>`
-  grid-column-start: ${props => props.column};
-  grid-column-end: ${props => props.endColumn ? props.endColumn : props.column};
-  grid-row-start: ${props => props.row};
-  grid-row-end: ${props => props.endRow ? props.endRow : props.row};
+  grid-column-start: ${props => props.position.column};
+  grid-column-end: ${props => props.position.endColumn ? props.position.endColumn : props.position.column};
+  grid-row-start: ${props => props.position.row};
+  grid-row-end: ${props => props.position.endRow ? props.position.endRow : props.position.row};
   border: 2px solid var(--orangeColor);
   pointer-events: none;
   z-index: 3;
 `;
 
-export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-${props.column}` }))<CellProps>`
+export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-${props.position.column}` }))<CellProps>`
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.08);
   width: 100%;
   position: relative;
-  background-color: white;
+  background-color: var(--primaryColor);
 
-  grid-column-start: ${props => props.column};
-  ${props => props.endColumn ? `grid-column-end: ${props.endColumn};` : null}
-  grid-row-start: ${props => props.row};
-  ${props => props.endRow ? `grid-row-end: ${props.endRow};` : null}
-  color: ${props => props.active ? '#000000' : '#828282'};
+  grid-column-start: ${props => props.position.column};
+  ${props => props.position.endColumn ? `grid-column-end: ${props.position.endColumn};` : null}
+  grid-row-start: ${props => props.position.row};
+  ${props => props.position.endRow ? `grid-row-end: ${props.position.endRow};` : null}
+  color: ${props => props.active ? '#000' : 'var(--primaryTextColor)'};
   
   &.day {
     font-size: 24px;
@@ -77,7 +75,7 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
 
   &.type {
     font-size: 11px;
-    color: #828282;
+    color: var(--primaryTextColor);
   }
 
   &.print {
@@ -110,9 +108,7 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
     justify-content: center;
     align-items: center;
   }
-
-
-
+  
   &.workout {
     font-size: 11px;
   }
@@ -133,11 +129,11 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
     }
     
     &.workout {
-      background-color: white;
+      background-color: var(--primaryColor);
     }
     
     &.day, &.workout, &.print, &.type {
-      min-height: 32px;
+      min-height: 50px;
     }
   }
   

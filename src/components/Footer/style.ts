@@ -2,23 +2,25 @@ import styled from 'styled-components';
 
 export const FooterContainer = styled.section`
   width: 100%;
-  margin: 50px auto 50px auto;
+  margin: 50px auto 32px auto;
   display: flex;
-  justify-content: space-between;
-  color: #828282;
+  color: var(--primaryTextColor);
   flex-direction: column;
   
   @media (min-width: 978px){
+    justify-content: space-between;
     flex-direction: row;
     width: 978px;
   }
 `;
 
 export const ContentContainer = styled.div`
-  margin-bottom: 15px;
+  word-wrap: break-word;
   
   @media (min-width: 978px){
-      width: 33.33%;
+    margin-bottom: 15px;
+    width: 33.33%;
+    
       &:not(&:nth-child(1)) {
         border-left: 1px solid rgba(194, 194, 194, 0.44);
       }
@@ -34,6 +36,14 @@ export const ContentContainer = styled.div`
       &:nth-child(3) {
         padding-left: 40px;
       }
+  }
+
+  @media (max-width: 978px){
+    padding: 16px;
+
+    &:not(&:nth-child(3)) {
+      border-bottom: 1px solid rgba(194, 194, 194, 0.44);
+    }
   }
 `;
 
@@ -54,7 +64,7 @@ export const ButtonContainer = styled.div`
 
 export const StyledButton = styled.button`
   font-size: 16px;
-  color: #828282;
+  color: var(--primaryTextColor);
   border: 1px solid rgb(192, 192, 192);
   padding: 5px 10px;
   border-radius: 6px;

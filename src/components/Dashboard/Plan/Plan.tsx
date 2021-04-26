@@ -32,8 +32,27 @@ function DesktopLayout({ plan }: IPlanProps): ReactElement {
 
     return (
         <React.Fragment>
-            {plan.timeTable.map((n, index) => <Cell key={index} column={1} row={index + 2} className="time">{n}</Cell>)}
-            <Cell className="workout" column={1} row={8}>Workout <Arrow/></Cell>
+            {plan.timeTable.map((n, index) => (
+                <Cell
+                    className="time"
+                    key={index}
+                    position={{
+                        column: 1,
+                        row: index + 2,
+                    }}
+                >
+                    {n}
+                </Cell>))}
+
+            <Cell
+                className="workout"
+                position={{
+                    row: 8,
+                    column: 1,
+                }}
+            >
+                Workout <Arrow/>
+            </Cell>
 
             {plan.days.map((n, index) => (
                 <Day
@@ -43,14 +62,19 @@ function DesktopLayout({ plan }: IPlanProps): ReactElement {
                     active={n.id === plan.currentDay}
                 />
             ))}
-            <Selection column={(plan.currentDay % weekDuration + 1)} row={1} endRow={9}/>
+            <Selection
+                position={{
+                    column: plan.currentDay % weekDuration + 1,
+                    row: 1,
+                    endRow: 9,
+                }}
+            />
         </React.Fragment>
     );
 }
 
 function MobileLayout({ plan }: IPlanProps): ReactElement {
     const weekDuration = 7;
-    const rowOffset = 5;
 
     return (
         <React.Fragment>
@@ -59,8 +83,10 @@ function MobileLayout({ plan }: IPlanProps): ReactElement {
                     (
                         <Cell
                             key={index * weekDuration + rowIndex}
-                            column={1}
-                            row={index * weekDuration + (rowIndex + 1) + 1}
+                            position={{
+                                column: 1,
+                                row: index * weekDuration + (rowIndex + 1) + 1,
+                            }}
                             className="time"
                         >
                             {time}
@@ -79,10 +105,12 @@ function MobileLayout({ plan }: IPlanProps): ReactElement {
                 />
             ))}
             <Selection
-                column={1}
-                endColumn={3}
-                row={plan.currentDay % weekDuration * rowOffset - 2}
-                endRow={plan.currentDay % weekDuration * rowOffset + rowOffset}
+                position={{
+                    column: 1,
+                    row: plan.currentDay % (weekDuration + 1) * weekDuration + 1,
+                    endColumn: 3,
+                    endRow: plan.currentDay % (weekDuration + 1) * weekDuration + weekDuration + 1,
+                }}
             />
         </React.Fragment>
     );

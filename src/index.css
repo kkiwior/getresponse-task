@@ -1,6 +1,8 @@
 :root {
     --headerBorderColor: #e1e1e1;
     --orangeColor: #ff811a;
+    --primaryColor: #fff;
+    --primaryTextColor: #828282;
 }
 
 body {

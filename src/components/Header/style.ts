@@ -12,6 +12,12 @@ export const HeaderWrapper = styled.header`
 
 export const HeaderContainer = styled.div`
   box-shadow: 0 0 2px 1px var(--headerBorderColor);
-  background-color: white;
+  background-color: var(--primaryColor);
   color: #7c7c7c;
+  
+  @media (max-width: 978px) {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 `;

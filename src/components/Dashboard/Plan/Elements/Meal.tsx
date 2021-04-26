@@ -4,13 +4,13 @@ import mealTick from 'resources/images/meal-tick.png';
 import { IMeal } from 'interfaces/IPlan';
 import { Cell } from '../style';
 import { MealName, MealTick, MealImage } from './style';
+import { IGridPosition } from 'interfaces/IGridPosition';
 
 interface IMealProps {
     meal: IMeal;
     dayId: number;
-    column: number;
-    row: number;
     active: boolean;
+    position: IGridPosition;
 }
 
 export function Meal(props: IMealProps): ReactElement {
@@ -25,8 +25,10 @@ export function Meal(props: IMealProps): ReactElement {
 
     return (
         <Cell className="meal"
-            column={props.column}
-            row={props.row}
+            position={{
+                column: props.position.column,
+                row: props.position.row,
+            }}
             image={props.meal.image ? props.meal.image : undefined}
             active={props.active}
             onClick={handleMealClick}

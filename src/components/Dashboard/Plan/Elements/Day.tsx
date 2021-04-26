@@ -21,18 +21,21 @@ export function Day(props: IDayProps): ReactElement {
             {props.isMobile ?
                 <Cell
                     className="day"
-                    column={1}
-                    endColumn={3}
-                    row={(props.column) * weekDuration + 1}
+                    position={{
+                        column: 1,
+                        row: props.column * weekDuration + 1,
+                        endColumn: 3,
+                    }}
                     active={props.active}
                 >
                     Day {props.day.id}
                 </Cell> :
                 <Cell
                     className="day"
-                    column={props.column}
-                    row={1}
-                    endRow={1}
+                    position={{
+                        column: props.column,
+                        row: 1,
+                    }}
                     active={props.active}
                 >
                     Day {props.day.id}
@@ -42,8 +45,10 @@ export function Day(props: IDayProps): ReactElement {
                 <Meal
                     key={index}
                     dayId={props.day.id}
-                    column={props.isMobile ? 2 : props.column}
-                    row={props.isMobile ? props.column * weekDuration + index + 2 : index + 2}
+                    position={{
+                        column: props.isMobile ? 2 : props.column,
+                        row: props.isMobile ? props.column * weekDuration + index + 2 : index + 2,
+                    }}
                     meal={n}
                     active={props.active}
                 />
@@ -51,17 +56,21 @@ export function Day(props: IDayProps): ReactElement {
             {props.day.type === 'GUILT-FREE' ?
                 <Cell
                     className="guilt-free"
-                    column={props.isMobile ? 1 : props.column}
-                    endColumn={props.isMobile ? columnOffset : undefined}
-                    row={props.isMobile ? props.column * weekDuration + 2 : 2}
-                    endRow={props.isMobile ? props.column * weekDuration + weekDuration: weekDuration}
+                    position={{
+                        column: props.isMobile ? 1 : props.column,
+                        row: props.isMobile ? props.column * weekDuration + 2 : 2,
+                        endColumn: props.isMobile ? columnOffset : undefined,
+                        endRow: props.isMobile ? props.column * weekDuration + weekDuration: weekDuration,
+                    }}
                 >
                     GUILT-FREE DAY
                 </Cell> :
                 <Cell
                     className="type"
-                    column={props.isMobile ? 1 : props.column}
-                    row={props.isMobile ? props.column * weekDuration : weekDuration}
+                    position={{
+                        column: props.isMobile ? 1 : props.column,
+                        row: props.isMobile ? props.column * weekDuration : weekDuration,
+                    }}
                 >
                     {props.day.type}
                 </Cell>}
@@ -74,8 +83,10 @@ export function Day(props: IDayProps): ReactElement {
                     endRow={props.isMobile ? undefined : weekDuration + 2}
                 /> :
                 <Workout
-                    column={props.isMobile ? 2 : props.column}
-                    row={props.isMobile ? props.column * weekDuration + weekDuration : weekDuration + 1}
+                    position={{
+                        column: props.isMobile ? 2 : props.column,
+                        row: props.isMobile ? props.column * weekDuration + weekDuration : weekDuration + 1,
+                    }}
                     dayId={props.day.id}
                     isDone={props.day.isWorkoutDone}
                     active={props.active}
