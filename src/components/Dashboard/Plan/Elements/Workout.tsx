@@ -8,24 +8,25 @@ interface IWorkoutProps {
     position: IGridPosition;
     dayId: number;
     isDone: boolean;
-    active: boolean;
+    isActive: boolean;
 }
 
 function Workout(props: IWorkoutProps): ReactElement {
     const { toggleWorkoutStatus } = usePlan();
 
     const handleClick = useCallback(() => {
-        if (props.active) {
+        if (props.isActive) {
             toggleWorkoutStatus(props.dayId);
         }
-    }, [props.active, toggleWorkoutStatus, props.dayId]);
+    }, [props.isActive, toggleWorkoutStatus, props.dayId]);
 
     return (
         <Cell className="workout"
             position={props.position}
+            active={props.isActive}
         >
             <WorkoutContainer onClick={handleClick}>
-                <WorkoutIcon enabled={props.isDone}/>
+                <WorkoutIcon current={props.isDone}/>
                 {props.isDone ? <Tick/> : null}
             </WorkoutContainer>
         </Cell>

@@ -8,7 +8,8 @@ import { Cell } from '../style';
 interface IDayProps {
     day: IDay;
     column: number;
-    active: boolean;
+    isCurrent: boolean;
+    isActive: boolean;
     isMobile?: boolean;
 }
 
@@ -26,7 +27,8 @@ export function Day(props: IDayProps): ReactElement {
                         row: props.column * weekDuration + 1,
                         endColumn: 3,
                     }}
-                    active={props.active}
+                    active={props.isActive}
+                    current={props.isCurrent}
                 >
                     Day {props.day.id}
                 </Cell> :
@@ -36,7 +38,8 @@ export function Day(props: IDayProps): ReactElement {
                         column: props.column,
                         row: 1,
                     }}
-                    active={props.active}
+                    active={props.isActive}
+                    current={props.isCurrent}
                 >
                     Day {props.day.id}
                 </Cell>}
@@ -50,7 +53,8 @@ export function Day(props: IDayProps): ReactElement {
                         row: props.isMobile ? props.column * weekDuration + index + 2 : index + 2,
                     }}
                     meal={n}
-                    active={props.active}
+                    isActive={props.isActive}
+                    isCurrent={props.isCurrent}
                 />
             ))}
             {props.day.type === 'GUILT-FREE' ?
@@ -89,7 +93,7 @@ export function Day(props: IDayProps): ReactElement {
                     }}
                     dayId={props.day.id}
                     isDone={props.day.isWorkoutDone}
-                    active={props.active}
+                    isActive={props.isActive}
                 />}
         </React.Fragment>
     );

@@ -6,6 +6,7 @@ import { IGridPosition } from 'interfaces/IGridPosition';
 interface CellProps {
     position: IGridPosition;
     active?: boolean;
+    current?: boolean;
     image?: string;
 }
 
@@ -43,7 +44,7 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
   ${props => props.position.endColumn ? `grid-column-end: ${props.position.endColumn};` : null}
   grid-row-start: ${props => props.position.row};
   ${props => props.position.endRow ? `grid-row-end: ${props.position.endRow};` : null}
-  color: ${props => props.active ? '#000' : 'var(--primaryTextColor)'};
+  color: ${props => props.current ? '#000' : 'var(--primaryTextColor)'};
   
   &.day {
     font-size: 24px;
@@ -51,7 +52,7 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
     align-items: center;
     font-weight: 500;
     text-transform: uppercase;
-    color: ${props => props.active ? 'var(--orangeColor)' : '#adbb0c'};
+    color: ${props => props.current ? 'var(--orangeColor)' : '#adbb0c'};
   }
 
   &.meal {
@@ -61,7 +62,13 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
     max-height: 90px;
 
     &:hover {
-      border-top: 1px solid var(--orangeColor);
+      border-top: ${props => props.active ? '1px solid var(--orangeColor)' : null};
+    }
+  }
+  
+  &.workout {
+    &:hover {
+      border-top: ${props => props.active ? '1px solid var(--orangeColor)' : null};
     }
   }
 

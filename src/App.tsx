@@ -13,7 +13,7 @@ const Container = styled.section`
 function App(): ReactElement {
     return (
         <div className="App">
-            <Router>
+            <Router basename="/getresponse-task">
                 <Header/>
                 <Container>
                     <Switch>

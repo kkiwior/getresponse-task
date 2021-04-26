@@ -9,7 +9,8 @@ import { IGridPosition } from 'interfaces/IGridPosition';
 interface IMealProps {
     meal: IMeal;
     dayId: number;
-    active: boolean;
+    isActive: boolean;
+    isCurrent: boolean;
     position: IGridPosition;
 }
 
@@ -18,10 +19,10 @@ export function Meal(props: IMealProps): ReactElement {
 
     const handleMealClick = useCallback(() => {
         //prevent to toggle meal status for not actual day
-        if (props.active) {
+        if (props.isActive) {
             toggleMealStatus(props.dayId, props.meal.id);
         }
-    }, [toggleMealStatus, props.dayId, props.meal.id, props.active]);
+    }, [toggleMealStatus, props.dayId, props.meal.id, props.isActive]);
 
     return (
         <Cell className="meal"
@@ -30,12 +31,13 @@ export function Meal(props: IMealProps): ReactElement {
                 row: props.position.row,
             }}
             image={props.meal.image ? props.meal.image : undefined}
-            active={props.active}
+            active={props.isActive}
+            current={props.isCurrent}
             onClick={handleMealClick}
         >
             <MealName>{props.meal.name}</MealName>
             {props.meal.isCompleted ? <MealTick src={mealTick}/> : null}
-            {props.meal.image ? <MealImage src={`/images/meals/${props.meal.image}`} enabled={props.active}/> : null}
+            {props.meal.image ? <MealImage src={`getresponse-task/images/meals/${props.meal.image}`} current={props.isActive}/> : null}
         </Cell>
     );
 }

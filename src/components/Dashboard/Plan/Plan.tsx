@@ -59,7 +59,8 @@ function DesktopLayout({ plan }: IPlanProps): ReactElement {
                     key={index}
                     column={index + 2}
                     day={n}
-                    active={n.id === plan.currentDay}
+                    isCurrent={n.id === plan.currentDay}
+                    isActive={n.id <= plan.currentDay}
                 />
             ))}
             <Selection
@@ -100,7 +101,8 @@ function MobileLayout({ plan }: IPlanProps): ReactElement {
                     key={index}
                     column={index}
                     day={day}
-                    active={day.id === plan.currentDay}
+                    isCurrent={day.id === plan.currentDay}
+                    isActive={day.id <= plan.currentDay}
                     isMobile={true}
                 />
             ))}

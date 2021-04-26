@@ -4,7 +4,7 @@ import workoutEnabledIcon from 'resources/images/workout-enabled.png';
 import workoutIcon from 'resources/images/workout.png';
 
 interface IEnabledProps {
-    enabled: boolean;
+    current: boolean;
 }
 
 export const MealName = styled.span`
@@ -27,7 +27,7 @@ export const MealImage = styled.img<IEnabledProps>`
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  ${props => props.enabled ? null : 'filter: grayscale(1) opacity(0.66);'}
+  ${props => props.current ? null : 'filter: grayscale(1) opacity(0.66);'}
 `;
 
 export const PrintText = styled.span`
@@ -49,10 +49,6 @@ export const WorkoutContainer = styled.div`
   z-index: 3;
   cursor: pointer;
   user-select: none;
-
-  &:hover {
-    border-top: 1px solid var(--orangeColor);
-  }
 `;
 
 export const WorkoutIcon = styled.div<IEnabledProps>`
@@ -60,5 +56,5 @@ export const WorkoutIcon = styled.div<IEnabledProps>`
   margin-left: 4px;
   width: 28px;
   height: 14px;
-  background: url(${props => props.enabled ? workoutEnabledIcon : workoutIcon});
+  background: url(${props => props.current ? workoutEnabledIcon : workoutIcon});
 `;
