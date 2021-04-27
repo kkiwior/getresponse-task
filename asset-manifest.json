@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/getresponse-task/static/css/main.dbc7383e.chunk.css",
-    "main.js": "/getresponse-task/static/js/main.59b4aa66.chunk.js",
-    "main.js.map": "/getresponse-task/static/js/main.59b4aa66.chunk.js.map",
+    "main.js": "/getresponse-task/static/js/main.9008b5bc.chunk.js",
+    "main.js.map": "/getresponse-task/static/js/main.9008b5bc.chunk.js.map",
     "runtime-main.js": "/getresponse-task/static/js/runtime-main.b7d7b0a8.js",
     "runtime-main.js.map": "/getresponse-task/static/js/runtime-main.b7d7b0a8.js.map",
     "static/js/2.4caeaef2.chunk.js": "/getresponse-task/static/js/2.4caeaef2.chunk.js",
@@ -14,23 +14,23 @@
     "static/js/2.4caeaef2.chunk.js.LICENSE.txt": "/getresponse-task/static/js/2.4caeaef2.chunk.js.LICENSE.txt",
     "static/media/arrow.3eeaf885.svg": "/getresponse-task/static/media/arrow.3eeaf885.svg",
     "static/media/avatar.52effef6.jpg": "/getresponse-task/static/media/avatar.52effef6.jpg",
-    "static/media/chicken-enabled.c3d40af2.webp": "/getresponse-task/static/media/chicken-enabled.c3d40af2.webp",
-    "static/media/chicken.41605c88.webp": "/getresponse-task/static/media/chicken.41605c88.webp",
-    "static/media/dairy-enabled.a836bcda.webp": "/getresponse-task/static/media/dairy-enabled.a836bcda.webp",
-    "static/media/dairy.939a8d91.webp": "/getresponse-task/static/media/dairy.939a8d91.webp",
-    "static/media/fish-enabled.879cc99b.webp": "/getresponse-task/static/media/fish-enabled.879cc99b.webp",
-    "static/media/fish.b241d3bd.webp": "/getresponse-task/static/media/fish.b241d3bd.webp",
-    "static/media/meat-enabled.af765810.webp": "/getresponse-task/static/media/meat-enabled.af765810.webp",
-    "static/media/meat.a1f729dd.webp": "/getresponse-task/static/media/meat.a1f729dd.webp",
+    "static/media/chicken-enabled.613e1f71.webp": "/getresponse-task/static/media/chicken-enabled.613e1f71.webp",
+    "static/media/chicken.d3e9dd54.webp": "/getresponse-task/static/media/chicken.d3e9dd54.webp",
+    "static/media/dairy-enabled.b52c8b97.webp": "/getresponse-task/static/media/dairy-enabled.b52c8b97.webp",
+    "static/media/dairy.f1a18dec.webp": "/getresponse-task/static/media/dairy.f1a18dec.webp",
+    "static/media/fish-enabled.0221930a.webp": "/getresponse-task/static/media/fish-enabled.0221930a.webp",
+    "static/media/fish.919f3a60.webp": "/getresponse-task/static/media/fish.919f3a60.webp",
+    "static/media/meat-enabled.baa87866.webp": "/getresponse-task/static/media/meat-enabled.baa87866.webp",
+    "static/media/meat.a4096908.webp": "/getresponse-task/static/media/meat.a4096908.webp",
     "static/media/print.e6a6ac83.svg": "/getresponse-task/static/media/print.e6a6ac83.svg",
     "static/media/tick.5f238406.svg": "/getresponse-task/static/media/tick.5f238406.svg",
-    "static/media/vegetable-enabled.dfaf49df.webp": "/getresponse-task/static/media/vegetable-enabled.dfaf49df.webp",
-    "static/media/vegetable.e4333ace.webp": "/getresponse-task/static/media/vegetable.e4333ace.webp"
+    "static/media/vegetable-enabled.da90489c.webp": "/getresponse-task/static/media/vegetable-enabled.da90489c.webp",
+    "static/media/vegetable.f0ed4b61.webp": "/getresponse-task/static/media/vegetable.f0ed4b61.webp"
   },
   "entrypoints": [
     "static/js/runtime-main.b7d7b0a8.js",
     "static/js/2.4caeaef2.chunk.js",
     "static/css/main.dbc7383e.chunk.css",
-    "static/js/main.59b4aa66.chunk.js"
+    "static/js/main.9008b5bc.chunk.js"
   ]
 }
