@@ -15,7 +15,7 @@ export function Button(props: IButton): ReactElement {
 
     return (
         <StyledButton onClick={handleButtonClick}>
-            {props.icon ? <ButtonIcon src={props.icon} alt=""/> : null}
+            {props.icon ? <ButtonIcon src={props.icon} alt={props.message} width="18px" height="21px"/> : null}
             <ButtonText>{props.message}</ButtonText>
             <Arrow viewBox="0 3 16 9"/>
         </StyledButton>

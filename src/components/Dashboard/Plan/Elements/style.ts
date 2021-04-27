@@ -47,7 +47,6 @@ export const WorkoutContainer = styled.div`
   grid-template-columns: 1fr 36px 1fr;
   align-items: center;
   z-index: 3;
-  cursor: pointer;
   user-select: none;
 `;
 

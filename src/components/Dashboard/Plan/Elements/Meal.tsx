@@ -36,8 +36,14 @@ export function Meal(props: IMealProps): ReactElement {
             onClick={handleMealClick}
         >
             <MealName>{props.meal.name}</MealName>
-            {props.meal.isCompleted ? <MealTick src={mealTick}/> : null}
-            {props.meal.image ? <MealImage src={`./images/meals/${props.meal.image}`} current={props.isCurrent}/> : null}
+            {props.meal.isCompleted ? <MealTick src={mealTick} alt="tick"/> : null}
+            {props.meal.image ?
+                <MealImage
+                    src={`./images/meals/${props.meal.image}`}
+                    current={props.isCurrent}
+                    alt={props.meal.name}
+                /> :
+                null}
         </Cell>
     );
 }

@@ -4,6 +4,13 @@ export const HeaderWrapper = styled.header`
   display: flex;
   margin: 0 auto;
   width: 100%;
+  flex-direction: row;    
+  justify-content: space-between;
+
+
+  @media (max-width: 425px){
+    flex-direction: column;
+  }
 
   @media (min-width: 978px){
     width: 978px;

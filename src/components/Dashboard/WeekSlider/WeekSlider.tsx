@@ -27,12 +27,22 @@ function WeekSlider(props: IWeekProps): ReactElement {
             {week > 1 ? (
                 <ArrowButton
                     className="reverse"
+                    name="previousWeek"
+                    aria-label="Previous week"
                     onClick={handlePreviousWeekClick}
                     column={1}
                 ><Arrow/>
                 </ArrowButton>) : null}
             <Week column={2}>Week {week}</Week>
-            {week < props.maxWeek ? <ArrowButton onClick={handleNextWeekClick} column={3}><Arrow/></ArrowButton> : null}
+            {week < props.maxWeek ?
+                <ArrowButton
+                    name="nextWeek"
+                    aria-label="Next week"
+                    onClick={handleNextWeekClick}
+                    column={3}
+                >
+                    <Arrow/>
+                </ArrowButton> : null}
         </SelectorContainer>
     );
 }

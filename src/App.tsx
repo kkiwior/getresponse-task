@@ -4,6 +4,7 @@ import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import styled from 'styled-components';
 import { Dashboard } from './components/Dashboard/Dashboard';
 import { Footer } from './components/Footer/Footer';
+import { NotImplemented } from './components/NotImplemented/NotImplemented';
 
 const Container = styled.section`
   margin: 24px auto 0;
@@ -18,12 +19,9 @@ function App(): ReactElement {
                 <Container>
                     <Switch>
                         <Redirect exact={true} from="/" to="dashboard" />
-                        <Route path="/">
-                            <Dashboard/>
-                        </Route>
-                        <Route path="/recipes">
-                            <Dashboard/>
-                        </Route>
+                        <Route path="/dashboard" component={Dashboard}/>
+                        <Route path="/recipes" component={NotImplemented}/>
+                        <Route path="/challenge" component={NotImplemented}/>
                     </Switch>
                 </Container>
                 <Footer/>

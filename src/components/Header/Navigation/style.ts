@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 export const NavigationContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 50%;
+  
+  @media (max-width: 978px){
+    justify-self: flex-end;
+  }
 
   @media (min-width: 978px){
     &::before {
@@ -60,7 +63,6 @@ export const NavigationLink = styled(NavLink)`
   
   @media (max-width: 978px){
     padding: 20px 6px;
-    font-weight: 400;
 
     &.active::after, &:hover::after {
       bottom: 10px;

@@ -58,17 +58,18 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
   &.meal {
     font-size: 13px;
     font-family: Arial, sans-serif;
-    cursor: pointer;
     max-height: 90px;
 
     &:hover {
       border-top: ${props => props.active ? '1px solid var(--orangeColor)' : null};
+      cursor: ${props => props.active ? 'pointer' : 'default'};
     }
   }
   
   &.workout {
     &:hover {
       border-top: ${props => props.active ? '1px solid var(--orangeColor)' : null};
+      cursor: ${props => props.active ? 'pointer' : 'default'};
     }
   }
 
@@ -100,7 +101,6 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
     justify-content: center;
     font-weight: 200;
     color: #c2c2c2;
-    cursor: text;
 
     &::before {
       content: "";
