@@ -1,20 +1,24 @@
 import React, { ReactElement, useEffect } from 'react';
-import planApi from 'resources/planApi.json';
+import { IPlan, MealType } from '../../../interfaces/IPlan';
+import planApi from '../../../resources/planApi.json';
 import { Day } from './Elements/Day';
-import { usePlan } from 'hooks/usePlan';
-import { PlanContainer, Cell, Arrow, Selection } from './style';
-import { IPlan } from 'interfaces/IPlan';
-import { useMedia } from 'hooks/useMedia';
+import { usePlan } from '../../../hooks/usePlan';
+import { Arrow, Cell, PlanContainer, Selection } from './style';
+import { useMedia } from '../../../hooks/useMedia';
+
+const weekDuration = 7;
 
 export function Plan(): ReactElement {
     const { plan, changePlan } = usePlan();
     const isMobile = useMedia('(max-width: 978px)');
 
-    const weekDuration = 7;
-
     useEffect(() => {
-        fetchPlan().then((planData: IPlan) => changePlan(planData));
+        fetchPlan().then(changePlan);
     }, [changePlan]);
+
+    if (plan === undefined) {
+        return <div>Fetching plan...</div>;
+    }
 
     return (
         <PlanContainer id="plan" column={plan.currentDay % weekDuration + 1}>
@@ -28,11 +32,9 @@ interface IPlanProps {
 }
 
 function DesktopLayout({ plan }: IPlanProps): ReactElement {
-    const weekDuration = 7;
-
     return (
         <React.Fragment>
-            {plan.timeTable.map((n, index) => (
+            {plan.timeTable.map((time, index) => (
                 <Cell
                     className="time"
                     key={index}
@@ -41,7 +43,8 @@ function DesktopLayout({ plan }: IPlanProps): ReactElement {
                         row: index + 2,
                     }}
                 >
-                    {n}
+                    <span>{time.split(' ')[0]}</span>
+                    {time.split(' ')[1]}
                 </Cell>))}
 
             <Cell
@@ -54,13 +57,13 @@ function DesktopLayout({ plan }: IPlanProps): ReactElement {
                 Workout <Arrow/>
             </Cell>
 
-            {plan.days.map((n, index) => (
+            {plan.days.map((day, index) => (
                 <Day
                     key={index}
                     column={index + 2}
-                    day={n}
-                    isCurrent={n.id === plan.currentDay}
-                    isActive={n.id <= plan.currentDay}
+                    day={day}
+                    isCurrent={day.id === plan.currentDay}
+                    isActive={day.id <= plan.currentDay}
                 />
             ))}
             <Selection
@@ -75,11 +78,9 @@ function DesktopLayout({ plan }: IPlanProps): ReactElement {
 }
 
 function MobileLayout({ plan }: IPlanProps): ReactElement {
-    const weekDuration = 7;
-
     return (
         <React.Fragment>
-            {plan.days.map((day, index) => (day.type === 'LOW-CARB' || 'HIGH-CARB') ?
+            {plan.days.map((day, index) => (day.type === MealType.LowCarb || day.type === MealType.HighCarb) ?
                 plan.timeTable.map((time, rowIndex) =>
                     (
                         <Cell
@@ -106,6 +107,7 @@ function MobileLayout({ plan }: IPlanProps): ReactElement {
                     isMobile={true}
                 />
             ))}
+
             <Selection
                 position={{
                     column: 1,
@@ -119,5 +121,5 @@ function MobileLayout({ plan }: IPlanProps): ReactElement {
 }
 
 function fetchPlan(): Promise<IPlan> {
-    return Promise.resolve(planApi);
+    return Promise.resolve(planApi as IPlan);
 }

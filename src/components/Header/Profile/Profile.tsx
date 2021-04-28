@@ -1,15 +1,16 @@
 import React, { ReactElement } from 'react';
-import { ReactComponent as Arrow } from 'resources/icons/arrow.svg';
+import { ReactComponent as Arrow } from '../../../resources/icons/arrow.svg';
 import { ProfileContainer, ProfileImage, ProfileName } from './style';
+import { useMedia } from '../../../hooks/useMedia';
 
-function Profile(): ReactElement {
+export function Profile(): ReactElement {
+    const isMobile = useMedia('(max-width: 500px)');
+
     return (
         <ProfileContainer>
             <ProfileImage/>
-            <ProfileName>Olivia Wilde</ProfileName>
+            {isMobile ? null : <ProfileName>Olivia Wilde</ProfileName>}
             <Arrow/>
         </ProfileContainer>
     );
 }
-
-export { Profile };

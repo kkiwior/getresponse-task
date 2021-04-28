@@ -6,12 +6,13 @@ interface IProgressProps {
     currentState: number;
 }
 
-function Progressbar(props: IProgressProps): ReactElement {
-    const progressSvg: Array<React.SVGProps<SVGElement>> = [];
+const xOffset = 10;
+const xSpace = 20;
+const yCenter = 5;
 
-    const xOffset = 10;
-    const xSpace = 20;
-    const cOffset = 5;
+export function Progressbar(props: IProgressProps): ReactElement {
+    const progressSvg: React.ReactNode[] = [];
+
     const width = xSpace * props.maxWeek - xOffset;
 
     for (let i = 0, key = 0; i < props.maxWeek; i++) {
@@ -31,14 +32,22 @@ function Progressbar(props: IProgressProps): ReactElement {
         progressSvg.push(
             <circle
                 key={key++}
-                cx={cOffset + i * xSpace}
+                cx={yCenter + i * xSpace}
                 cy="5"
                 r="5"
                 fill={i < props.currentState - 1 ? '#b2c200' : '#dbdbdb'}
             />,
         );
         if (i === props.currentState - 1) {
-            progressSvg.push(<circle key={key++} cx={cOffset + i * xSpace} cy="5" r="3" fill="white"/>);
+            progressSvg.push(
+                <circle
+                    key={key++}
+                    cx={yCenter + i * xSpace}
+                    cy="5"
+                    r="3"
+                    fill="white"
+                />,
+            );
         }
     }
 
@@ -49,10 +58,8 @@ function Progressbar(props: IProgressProps): ReactElement {
                 {progressSvg}
             </ProgressbarSvg>
             <WeekContainer>
-                {Array.from(Array(props.maxWeek).keys()).map((value) => <Week key={value}>{value + 1}</Week>)}
+                {new Array(props.maxWeek).fill(0).map((_, value) => <Week key={value}>{value + 1}</Week>)}
             </WeekContainer>
         </ProgressContainer>
     );
 }
-
-export { Progressbar };

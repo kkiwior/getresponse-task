@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 export const NavigationContainer = styled.div`
   display: flex;
   flex-direction: row;
-  
-  @media (max-width: 978px){
+
+  @media (max-width: 978px) {
     justify-self: flex-end;
   }
 
-  @media (min-width: 978px){
+  @media (min-width: 978px) {
     &::before {
       content: "";
       padding-left: 16px;
@@ -17,8 +17,8 @@ export const NavigationContainer = styled.div`
       border-left: 1px solid var(--headerBorderColor);
     }
   }
-  
-  @media (max-width: 978px){
+
+  @media (max-width: 978px) {
     position: sticky;
     top: 0;
   }
@@ -60,8 +60,8 @@ export const NavigationLink = styled(NavLink)`
     text-decoration: none;
     color: unset;
   }
-  
-  @media (max-width: 978px){
+
+  @media (max-width: 978px) {
     padding: 20px 6px;
 
     &.active::after, &:hover::after {

@@ -1,44 +1,45 @@
 import styled from 'styled-components';
 
-export const FooterContainer = styled.section`
+export const FooterContainer = styled.footer`
   width: 100%;
-  margin: 50px auto 32px auto;
+  margin: 50px 0 32px;
   display: flex;
   color: var(--primaryTextColor);
   flex-direction: column;
-  
-  @media (min-width: 978px){
+
+  @media (min-width: 978px) {
     justify-content: space-between;
     flex-direction: row;
     width: 978px;
+    margin-left: calc(50vw - 495px);
   }
 `;
 
 export const ContentContainer = styled.div`
   word-wrap: break-word;
-  
-  @media (min-width: 978px){
+
+  @media (min-width: 978px) {
     margin-bottom: 15px;
     width: 33.33%;
-    
-      &:not(&:nth-child(1)) {
-        border-left: 1px solid rgba(194, 194, 194, 0.44);
-      }
-    
-      &:nth-child(1) {
-        padding-right: 40px;
-      }
-    
-      &:nth-child(2) {
-        padding: 0 40px 0 40px;
-      }
-    
-      &:nth-child(3) {
-        padding-left: 40px;
-      }
+
+    &:not(&:nth-child(1)) {
+      border-left: 1px solid rgba(194, 194, 194, 0.44);
+    }
+
+    &:nth-child(1) {
+      padding-right: 40px;
+    }
+
+    &:nth-child(2) {
+      padding: 0 40px 0 40px;
+    }
+
+    &:nth-child(3) {
+      padding-left: 40px;
+    }
   }
 
-  @media (max-width: 978px){
+  @media (max-width: 978px) {
     padding: 16px;
 
     &:not(&:nth-child(3)) {
@@ -86,5 +87,5 @@ export const ButtonText = styled.span`
 `;
 
 export const ButtonIcon = styled.img`
-    margin-right: 4px;
+  margin-right: 4px;
 `;

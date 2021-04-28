@@ -2,13 +2,13 @@ import { ButtonIcon, ButtonText, StyledButton } from '../style';
 import { ReactComponent as Arrow } from '../../../resources/icons/arrow.svg';
 import React, { ReactElement, useCallback } from 'react';
 
-export interface IButton {
+export interface IButtonProps {
     message: string;
     icon?: string;
     href: string;
 }
 
-export function Button(props: IButton): ReactElement {
+export function Button(props: IButtonProps): ReactElement {
     const handleButtonClick = useCallback(() => {
         window.open(props.href, '_blank');
     }, [props.href]);

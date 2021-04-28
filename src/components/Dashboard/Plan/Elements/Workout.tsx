@@ -1,8 +1,7 @@
-import { Cell } from '../style';
-import { WorkoutContainer, WorkoutIcon, Tick } from './style';
+import { ElementCell, WorkoutContainer, WorkoutIcon, Tick } from './style';
 import React, { ReactElement, useCallback } from 'react';
-import { usePlan } from 'hooks/usePlan';
-import { IGridPosition } from 'interfaces/IGridPosition';
+import { usePlan } from '../../../../hooks/usePlan';
+import { IGridPosition } from '../IGridPosition';
 
 interface IWorkoutProps {
     position: IGridPosition;
@@ -11,7 +10,7 @@ interface IWorkoutProps {
     isActive: boolean;
 }
 
-function Workout(props: IWorkoutProps): ReactElement {
+export function Workout(props: IWorkoutProps): ReactElement {
     const { toggleWorkoutStatus } = usePlan();
 
     const handleClick = useCallback(() => {
@@ -21,17 +20,15 @@ function Workout(props: IWorkoutProps): ReactElement {
     }, [props.isActive, toggleWorkoutStatus, props.dayId]);
 
     return (
-        <Cell className="workout"
+        <ElementCell className="workout"
             position={props.position}
-            active={props.isActive}
+            isActive={props.isActive}
             onClick={handleClick}
         >
             <WorkoutContainer>
-                <WorkoutIcon current={props.isDone}/>
+                <WorkoutIcon isActive={props.isDone}/>
                 {props.isDone ? <Tick/> : null}
             </WorkoutContainer>
-        </Cell>
+        </ElementCell>
     );
 }
-
-export { Workout };

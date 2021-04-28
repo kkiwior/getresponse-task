@@ -6,9 +6,9 @@ interface IWidthProps {
 
 export const ProgressContainer = styled.div<IWidthProps>`
   display: inline-block;
-  width: ${props => props.width}px;
-  
-  @media (max-width: 978px){
+  width: ${props => props.width + 2}px;
+
+  @media (max-width: 978px) {
     margin: 0 auto 10px auto;
   }
 `;
@@ -17,7 +17,7 @@ export const Title = styled.p`
   text-transform: uppercase;
   margin-bottom: 8px;
 
-  @media (max-width: 978px){
+  @media (max-width: 978px) {
     text-align: center;
   }
 `;

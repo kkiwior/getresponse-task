@@ -1,3 +1,9 @@
+export enum MealType {
+    LowCarb = 'LOW-CARB',
+    HighCarb = 'HIGH-CARB',
+    GuiltFree = 'GUILT-FREE',
+}
+
 export interface IMeal {
     id: number;
     name: string;
@@ -8,7 +14,7 @@ export interface IMeal {
 export interface IDay {
     id: number;
     meals: IMeal[];
-    type: string;
+    type: MealType;
     isWorkoutDone: boolean;
 }
 

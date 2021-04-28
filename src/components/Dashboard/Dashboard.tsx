@@ -6,7 +6,7 @@ import { Plan } from './Plan/Plan';
 import { PlanProvider } from '../../contexts/PlanContext';
 import { MainContainer } from './style';
 
-function Dashboard(): ReactElement {
+export function Dashboard(): ReactElement {
     return (
         <PlanProvider>
             <MainContainer>
@@ -18,5 +18,3 @@ function Dashboard(): ReactElement {
         </PlanProvider>
     );
 }
-
-export { Dashboard };

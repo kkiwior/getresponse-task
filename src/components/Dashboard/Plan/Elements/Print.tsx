@@ -1,22 +1,18 @@
-import React from 'react';
-import { Cell } from '../style';
-import { PrintText } from './style';
-import { ReactComponent as PrintIcon } from 'resources/icons/print.svg';
-import { IGridPosition } from '../../../../interfaces/IGridPosition';
+import React, { ReactElement } from 'react';
+import { ElementCell, PrintText } from './style';
+import { ReactComponent as PrintIcon } from '../../../../resources/icons/print.svg';
+import { IGridPosition } from '../IGridPosition';
 
-export function Print(props: IGridPosition): React.ReactElement {
-    const handlePrintClick = React.useCallback(() => {
-        window.print();
-    }, []);
-
+export function Print(props: IGridPosition): ReactElement {
     return (
-        <Cell
+        <ElementCell
             className="print"
             position={props}
-            onClick={handlePrintClick}
+            onClick={window.print}
+            isActive={true}
         >
             <PrintIcon/>
             <PrintText>Print</PrintText>
-        </Cell>
+        </ElementCell>
     );
 }

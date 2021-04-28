@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { NavigationContainer, NavigationLink } from './style';
 
-function Navigation(): ReactElement {
+export function Navigation(): ReactElement {
     return (
         <NavigationContainer>
             <NavigationLink to="/dashboard" activeClassName="active">Dashboard</NavigationLink>
@@ -11,4 +11,3 @@ function Navigation(): ReactElement {
     );
 }
 
-export { Navigation };

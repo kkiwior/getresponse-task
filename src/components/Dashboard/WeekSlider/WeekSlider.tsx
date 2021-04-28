@@ -1,5 +1,5 @@
 import React, { ReactElement, useCallback, useState } from 'react';
-import { ReactComponent as Arrow } from 'resources/icons/arrow.svg';
+import { ReactComponent as Arrow } from '../../../resources/icons/arrow.svg';
 import { SelectorContainer, ArrowButton, Week } from './style';
 
 interface IWeekProps {
@@ -7,7 +7,7 @@ interface IWeekProps {
     maxWeek: number;
 }
 
-function WeekSlider(props: IWeekProps): ReactElement {
+export function WeekSlider(props: IWeekProps): ReactElement {
     const [week, setWeek] = useState(props.currentWeek);
 
     const changeWeek = useCallback((c: number): void => {
@@ -47,4 +47,3 @@ function WeekSlider(props: IWeekProps): ReactElement {
     );
 }
 
-export { WeekSlider };

@@ -3,7 +3,7 @@ import { Navigation } from './Navigation/Navigation';
 import { Profile } from './Profile/Profile';
 import { HeaderContainer, HeaderWrapper } from './style';
 
-function Header(): ReactElement {
+export function Header(): ReactElement {
     return (
         <HeaderContainer>
             <HeaderWrapper>
@@ -13,5 +13,3 @@ function Header(): ReactElement {
         </HeaderContainer>
     );
 }
-
-export { Header };

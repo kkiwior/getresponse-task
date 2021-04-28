@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react';
 import { Meal } from './Meal';
 import { Workout } from './Workout';
 import { Print } from './Print';
-import { IDay } from 'interfaces/IPlan';
-import { Cell } from '../style';
+import { IDay, MealType } from '../../../../interfaces/IPlan';
+import { ElementCell, GuiltFreeText } from './style';
 
 interface IDayProps {
     day: IDay;
@@ -13,36 +13,38 @@ interface IDayProps {
     isMobile?: boolean;
 }
 
-export function Day(props: IDayProps): ReactElement {
-    const weekDuration = 7;
-    const columnOffset = 3;
+const weekDuration = 7;
+const columnOffset = 3;
 
+export function Day(props: IDayProps): ReactElement {
     return (
         <React.Fragment>
-            {props.isMobile ?
-                <Cell
-                    className="day"
-                    position={{
-                        column: 1,
-                        row: props.column * weekDuration + 1,
-                        endColumn: 3,
-                    }}
-                    active={props.isActive}
-                    current={props.isCurrent}
-                >
-                    Day {props.day.id}
-                </Cell> :
-                <Cell
-                    className="day"
-                    position={{
-                        column: props.column,
-                        row: 1,
-                    }}
-                    active={props.isActive}
-                    current={props.isCurrent}
-                >
-                    Day {props.day.id}
-                </Cell>}
+            {
+                props.isMobile ?
+                    <ElementCell
+                        className="day"
+                        position={{
+                            column: 1,
+                            row: props.column * weekDuration + 1,
+                            endColumn: 3,
+                        }}
+                        isActive={props.isActive}
+                        isCurrent={props.isCurrent}
+                    >
+                        Day {props.day.id}
+                    </ElementCell> :
+                    <ElementCell
+                        className="day"
+                        position={{
+                            column: props.column,
+                            row: 1,
+                        }}
+                        isActive={props.isActive}
+                        isCurrent={props.isCurrent}
+                    >
+                        Day {props.day.id}
+                    </ElementCell>
+            }
 
             {props.day.meals.map((n, index) => (
                 <Meal
@@ -57,44 +59,49 @@ export function Day(props: IDayProps): ReactElement {
                     isCurrent={props.isCurrent}
                 />
             ))}
-            {props.day.type === 'GUILT-FREE' ?
-                <Cell
-                    className="guilt-free"
-                    position={{
-                        column: props.isMobile ? 1 : props.column,
-                        row: props.isMobile ? props.column * weekDuration + 2 : 2,
-                        endColumn: props.isMobile ? columnOffset : undefined,
-                        endRow: props.isMobile ? props.column * weekDuration + weekDuration: weekDuration,
-                    }}
-                >
-                    GUILT-FREE DAY
-                </Cell> :
-                <Cell
-                    className="type"
-                    position={{
-                        column: props.isMobile ? 1 : props.column,
-                        row: props.isMobile ? props.column * weekDuration : weekDuration,
-                    }}
-                >
-                    {props.day.type}
-                </Cell>}
 
-            {props.day.type === 'GUILT-FREE' ?
-                <Print
-                    column={props.isMobile ? 1 : props.column}
-                    endColumn={props.isMobile ? columnOffset : undefined}
-                    row={props.isMobile ? props.column * weekDuration + weekDuration : weekDuration}
-                    endRow={props.isMobile ? undefined : weekDuration + 2}
-                /> :
-                <Workout
-                    position={{
-                        column: props.isMobile ? 2 : props.column,
-                        row: props.isMobile ? props.column * weekDuration + weekDuration : weekDuration + 1,
-                    }}
-                    dayId={props.day.id}
-                    isDone={props.day.isWorkoutDone}
-                    isActive={props.isActive}
-                />}
+            {
+                props.day.type === MealType.GuiltFree ?
+                    <React.Fragment>
+                        <ElementCell
+                            className="guilt-free"
+                            position={{
+                                column: props.isMobile ? 1 : props.column,
+                                row: props.isMobile ? props.column * weekDuration + 2 : 2,
+                                endColumn: props.isMobile ? columnOffset : undefined,
+                                endRow: props.isMobile ? props.column * weekDuration + weekDuration: weekDuration,
+                            }}
+                        >
+                            <GuiltFreeText>GUILT-FREE DAY</GuiltFreeText>
+                        </ElementCell>
+                        <Print
+                            column={props.isMobile ? 1 : props.column}
+                            endColumn={props.isMobile ? columnOffset : undefined}
+                            row={props.isMobile ? props.column * weekDuration + weekDuration : weekDuration}
+                            endRow={props.isMobile ? undefined : weekDuration + 2}
+                        />
+                    </React.Fragment> :
+                    <React.Fragment>
+                        <ElementCell
+                            className="type"
+                            position={{
+                                column: props.isMobile ? 1 : props.column,
+                                row: props.isMobile ? props.column * weekDuration : weekDuration,
+                            }}
+                        >
+                            {props.day.type}
+                        </ElementCell>
+                        <Workout
+                            position={{
+                                column: props.isMobile ? 2 : props.column,
+                                row: props.isMobile ? props.column * weekDuration + weekDuration : weekDuration + 1,
+                            }}
+                            dayId={props.day.id}
+                            isDone={props.day.isWorkoutDone}
+                            isActive={props.isActive}
+                        />
+                    </React.Fragment>
+            }
         </React.Fragment>
     );
 }

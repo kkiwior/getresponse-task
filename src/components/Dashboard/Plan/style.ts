@@ -1,18 +1,16 @@
 import styled from 'styled-components';
-import guiltFreeIcon from 'resources/images/guilt-free.png';
-import bgTablePattern from 'resources/images/bg-table-pattern.png';
-import { IGridPosition } from 'interfaces/IGridPosition';
+import bgTablePattern from '../../../resources/images/bg-table-pattern.png';
+import { IGridPosition } from './IGridPosition';
 
 interface CellProps {
     position: IGridPosition;
-    active?: boolean;
-    current?: boolean;
-    image?: string;
 }
 
 interface IPlanContainerProps {
     column: number;
 }
+
+const columnClass = 'column-';
 
 export const Arrow = styled.div`
   width: 0;
@@ -25,15 +23,16 @@ export const Arrow = styled.div`
 
 export const Selection = styled.div<CellProps>`
   grid-column-start: ${props => props.position.column};
-  grid-column-end: ${props => props.position.endColumn ? props.position.endColumn : props.position.column};
+  grid-column-end: ${props => props.position.endColumn ?? props.position.column};
   grid-row-start: ${props => props.position.row};
-  grid-row-end: ${props => props.position.endRow ? props.position.endRow : props.position.row};
+  grid-row-end: ${props => props.position.endRow ?? props.position.row};
   border: 2px solid var(--orangeColor);
   pointer-events: none;
   z-index: 3;
 `;
 
-export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-${props.position.column}` }))<CellProps>`
+export const Cell = styled.div.attrs<CellProps>(props =>
+    ({ className: columnClass + props.position.column }))<CellProps>`
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.08);
   width: 100%;
@@ -44,71 +43,20 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
   ${props => props.position.endColumn ? `grid-column-end: ${props.position.endColumn};` : null}
   grid-row-start: ${props => props.position.row};
   ${props => props.position.endRow ? `grid-row-end: ${props.position.endRow};` : null}
-  color: ${props => props.current ? '#000' : 'var(--primaryTextColor)'};
-  
-  &.day {
-    font-size: 24px;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: ${props => props.current ? 'var(--orangeColor)' : '#adbb0c'};
-  }
-
-  &.meal {
-    font-size: 13px;
-    font-family: Arial, sans-serif;
-    max-height: 90px;
-
-    &:hover {
-      border-top: ${props => props.active ? '1px solid var(--orangeColor)' : null};
-      cursor: ${props => props.active ? 'pointer' : 'default'};
-    }
-  }
-  
-  &.workout {
-    &:hover {
-      border-top: ${props => props.active ? '1px solid var(--orangeColor)' : null};
-      cursor: ${props => props.active ? 'pointer' : 'default'};
-    }
-  }
+  color: var(--primaryTextColor);
 
   &.time {
     font-size: 13px;
-  }
 
-  &.time .time-bold {
-    font-weight: 600;
-  }
-
-  &.type {
-    font-size: 11px;
-    color: var(--primaryTextColor);
-  }
-
-  &.print {
-    cursor: pointer;
-    transition: all 0.2s linear;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.08);
+    & span {
+      font-weight: 600;
+      padding-right: 2px;
     }
   }
 
   &.guilt-free {
-    font-size: 35px;
     align-items: center;
     justify-content: center;
-    font-weight: 200;
-    color: #c2c2c2;
-
-    &::before {
-      content: "";
-      width: 32px;
-      height: 32px;
-      background: url(${guiltFreeIcon});
-      position: relative;
-    }
   }
 
   &.column-1, &.workout, &.type, &.print {
@@ -116,48 +64,28 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
     justify-content: center;
     align-items: center;
   }
-  
-  &.workout {
-    font-size: 11px;
-  }
-  
-  @media (max-width: 978px){
+
+  @media (max-width: 978px) {
     &.day, &.time, &.border, &.workout, &.type, &.print, &.meal, &.guilt-free {
       border-right: none;
       border-left: none;
     }
-    
+
     &.guilt-free {
-      background: white;
+      background: var(--primaryColor);
       padding: 20px 0;
-      
-      &::before {
-        margin-right: 12px;
-      }
     }
-    
+
     &.workout {
       background-color: var(--primaryColor);
     }
-    
+
     &.day, &.workout, &.print, &.type {
       min-height: 50px;
     }
   }
-  
-  @media (min-width: 978px) {
-    &.guilt-free {
-      writing-mode: vertical-lr;
-      transform: rotate(180deg);
 
-      &::before {
-        transform: rotate(180deg);
-        position: relative;
-        bottom: 25px;
-        margin-top: 35px
-      }
-    }
-    
+  @media (min-width: 978px) {
     &.workout, &.print, &.time:nth-child(5), &.meal:nth-child(5n) {
       border-bottom: none;
     }
@@ -166,15 +94,16 @@ export const Cell = styled.div.attrs<CellProps>(props => ({ className: `column-$
       border-top: none;
     }
 
-    &.column-1, &.workout, &.type, &.print, &.column-2, &.column-8.guilt-free {
+    &.column-1, &.workout, &.type, &.print, &.column-2 {
       border-left: none;
     }
 
-    &.column-1.workout, &.column-8.day {
+    &.column-1.workout, &.column-8 {
       border-right: none;
     }
-    
+
     &.column-1.workout {
+      font-size: 11px;
       border-width: 2px;
       margin-top: -1px;
     }
@@ -186,29 +115,29 @@ export const PlanContainer = styled.div<IPlanContainerProps>`
   display: grid;
   background: url(${bgTablePattern}) #eeeeee repeat;
   background-blend-mode: multiply;
-  font-family: "Arial", serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin-top: 28px;
 
-  @media (max-width: 978px){
+  @media (max-width: 978px) {
     grid-template-columns: 1fr 2fr;
     grid-template-rows: repeat(7, 0.8fr repeat(5, 1fr) 0.8fr);
     max-height: 4000px;
   }
-  
-  @media (min-width: 978px){
+
+  @media (min-width: 978px) {
     grid-template-columns: 0.85fr repeat(7, 1.26fr);
     grid-template-rows: 0.5fr repeat(5, 0.9fr) repeat(2, 0.35fr);
     height: 580px;
 
-    & ${props => `.column-${props.column - 1}`} {
+    & ${props => columnClass + (props.column - 1)} {
       border-right: none;
     }
 
-    & ${props => `.column-${props.column + 1}`} {
+    & ${props => columnClass + (props.column + 1)} {
       border-left: none;
     }
 
-    & ${props => `.column-${props.column}`} {
+    & ${props => columnClass + props.column} {
       border-right: none;
       border-left: none;
     }

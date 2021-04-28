@@ -1,11 +1,10 @@
 import React, { ReactElement } from 'react';
 import { Title, Message, ContentContainer, ButtonContainer } from '../style';
-import { Button, IButton } from './Button';
 
 interface IContentProps {
     title: string;
     message: string;
-    buttons: IButton[];
+    buttons: React.ReactElement[];
 }
 
 export function Content(props: IContentProps): ReactElement {
@@ -14,9 +13,7 @@ export function Content(props: IContentProps): ReactElement {
             <Title>{props.title}</Title>
             <Message>{props.message}</Message>
             <ButtonContainer>
-                {props.buttons.map((button) => (
-                    <Button key={button.message} icon={button.icon} message={button.message} href={button.href}/>
-                ))}
+                {props.buttons}
             </ButtonContainer>
         </ContentContainer>
     );

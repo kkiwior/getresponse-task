@@ -17,6 +17,7 @@ export const SelectorContainer = styled.div`
 export const ArrowButton = styled.button<IGridColumnProps>`
   border: 1px solid rgb(192, 192, 192);
   padding: 13px 7px 10px 8px;
+  margin: 0;
   border-radius: 6px;
   cursor: pointer;
   background: transparent;

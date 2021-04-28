@@ -6,29 +6,28 @@ interface Props {
 }
 
 export interface IPlanContext {
-    plan: IPlan;
-
+    plan: IPlan | undefined;
     changePlan(planData: IPlan): void;
-
     toggleWorkoutStatus(dayId: number): void;
-
     toggleMealStatus(dayId: number, mealId: number): void;
 }
 
 export const PlanContext = React.createContext<IPlanContext | null>(null);
 
-function PlanProvider(props: Props): React.ReactElement {
-    const init: IPlan = { currentDay: 65, days: [], timeTable: [] };
-    const [plan, setPlan] = useState<IPlan>(init);
+export function PlanProvider(props: Props): React.ReactElement {
+    const [plan, setPlan] = useState<IPlan>();
 
     const changePlan: IPlanContext['changePlan'] = useCallback((planData) => {
         setPlan(planData);
     }, []);
 
     const toggleWorkoutStatus: IPlanContext['toggleWorkoutStatus'] = useCallback((dayId) => {
+        if (plan === undefined) {
+            return;
+        }
         const days: IDay[] = plan.days.map((day: IDay) => {
             if (dayId === day.id) {
-                day.isWorkoutDone = !day.isWorkoutDone;
+                return { ...day, isWorkoutDone: !day.isWorkoutDone };
             }
             return day;
         });
@@ -36,11 +35,14 @@ function PlanProvider(props: Props): React.ReactElement {
     }, [plan]);
 
     const toggleMealStatus: IPlanContext['toggleMealStatus'] = useCallback((dayId, mealId) => {
+        if (plan === undefined) {
+            return;
+        }
         const days: IDay[] = plan.days.map((day: IDay) => {
             if (dayId === day.id) {
                 day.meals = day.meals.map((meal: IMeal) => {
                     if (meal.id === mealId) {
-                        meal.isCompleted = !meal.isCompleted;
+                        return { ...meal, isCompleted: !meal.isCompleted };
                     }
                     return meal;
                 });
@@ -63,5 +65,3 @@ function PlanProvider(props: Props): React.ReactElement {
         </PlanContext.Provider>
     );
 }
-
-export { PlanProvider };
